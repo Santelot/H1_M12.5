@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M12.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente y motivar a los genios para el reto del día.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy tenemos una misión emocionante que pondrá a prueba sus habilidades de detectives y su capacidad para usar IA con prompts avanzados. Nos adentraremos en un misterio en el que cada pista cuenta. ¿Están listos para descubrir al culpable?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo se sienten hoy. Si están listos para resolver este caso y encontrar pistas, toquen su barbilla. Si sienten que van a necesitar algo de café imaginario para despertar, hagan como si sostuvieran una taza y tomen un sorbo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Como siempre, juntemos las manos en agradecimiento por la oportunidad de aprender y trabajar juntos hoy. Gracias por estar aquí, Genios."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Utilizar Few-Shot Prompting para extraer información clave. 2. Identificar pistas relevantes para resolver el caso. ¡Vamos a poner nuestras habilidades al máximo para resolver este misterio!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🚶‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Preparar el ánimo y la energía para enfrentar el reto del día.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Saludo de Suerte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de lanzarnos al reto, quiero que saludemos a los que nos rodean. Extiendan la mano y digan: '¡Suerte en el reto!'. Nunca sabemos qué tan importante puede ser una palabra de aliento para alguien más."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Temporizador".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ese pequeño saludo no solo hace que los demás se sientan apoyados, sino que también crea un ambiente de colaboración y empatía, lo que será esencial mientras trabajamos juntos para resolver el caso. ¡Listos para el siguiente paso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Formación de equipos y organización para el reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, quiero que formen los mismos equipos de 3 personas que utilizaron en la misión anterior. Organícense rápidamente y asegúrense de estar listos para el reto. Les daré 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recogida de Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, un representante de cada equipo puede pasar a recoger las Magic Tablets. Les daré 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 43 minutos</div>
+        <div class="subtitle">Resolver el caso usando Few-Shot Prompting y colaboración con la IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy nos convertiremos en detectives. Prepárense para jugar una versión de ClueDo que les aseguro nunca antes han experimentado. Una pintura invaluable, 'The Midnight Blossom', ha sido robada del Museo Nacional de Arte durante la inauguración de una exposición especial. El equipo de seguridad del museo realizó entrevistas detalladas con varios asistentes, miembros del personal y personal de seguridad. Las transcripciones de estas entrevistas son extensas, llenas de detalles irrelevantes, divagaciones y pasajes ocasionalmente incoherentes debido a la naturaleza caótica de esa noche. Como detectives junior, ustedes tienen la tarea de analizar estas transcripciones extensas para extraer información crucial que los lleve a identificar al culpable. Revisar manualmente estos documentos resulta ser una tarea desafiante y que consume mucho tiempo. Sin embargo, usando few-shot prompting, ustedes podrán guiar a la IA para producir resúmenes concisos de cada transcripción, resaltando los detalles clave relevantes para el caso. Esto les permitirá reunir las pistas y resolver el misterio de manera eficiente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Objetivo del Reto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a investigar entrevistas llenas de detalles irrelevantes. La tarea es encontrar la verdad. Para eso, usaremos Few-Shot Prompting y guiarán al modelo para resumir las transcripciones, encontrando pistas clave. ¡Manos a la obra!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Fase 1: Resumen Manual".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso es hacer un resumen manual del primer testimonio. Su enfoque: extraer nombres, horarios y eventos relevantes. Esto nos dará la base para crear los prompts adecuados. Piensen en qué información de la entrevista puede ser importante y relevante para resolver el misterio. Inclusive pueden pedirle a ChatGPT que haga una línea temporal con todos los eventos que sucedieron, pero para hacerlo de la mejor forma correcta, deben construir ustedes el primer ejemplo a mano."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - Fase 1".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Fase 2: Diseño del Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Con el resumen manual listo, toca convertirlo en un One-Shot Prompt. Este será el ejemplo que guiará al modelo para procesar las transcripciones más rápido y con precisión. Tienen unos minutos para redactar su prompt incorporando su One-Shot."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - Fase 2".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Fase 3: Procesamiento con IA".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen el prompt, es hora de usar ChatGPT. Introduzcan cada transcripción en el modelo y analicen los resúmenes generados. Revisen si contienen toda la información clave."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (5 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - Fase 3".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Fase 4: Revisión del Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tómense unos minutos para revisar los resultados hasta el momento. Si los resúmenes no son precisos, toca ajustar el prompt. Pueden agregar más ejemplos o ser más específicos en sus instrucciones. Al ser ingenieros de prompts, podemos probar y modificar sobre la marcha para encontrar los mejores resultados posibles. ¡Recuerden, la precisión es clave para resolver el caso!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - Fase 4".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+
+
+    <tr>
+        <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Fase 5: Análisis y Culpa".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, con todos los resúmenes en mano, analicen la información. Busquen patrones, comportamientos sospechosos y pistas clave que apunten hacia el culpable. Usen ChatGPT para asistirlos con el análisis de la información, de manera que puedan llegar más certeramente a una conclusión. Preparen una breve presentación de resultados, con una duración máxima de 30 segundos, en la que nos expliquen quién es el culpable."</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - Fase 5".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Fase 6: Presentación".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Cada equipo presentará su conclusión: ¿quién es el culpable y por qué? Les daremos un minuto por equipo para explicar su razonamiento. /////NOTA PARA EL MAESTRO: 'Con base en la información resumida, Emily tenía los medios, la oportunidad y un posible motivo para orquestar el robo de 'The Midnight Blossom.' Sus movimientos coinciden con el marco temporal del robo, y varios testigos observaron comportamientos que podrían considerarse sospechosos. Las inconsistencias en su relato, combinadas con su acceso a áreas y sistemas clave, la señalan como la probable culpable.'/////"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 14 (5 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro - Presentación".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Reflexión".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les pareció usar prompts para resolver el caso? ¿Qué desafíos encontraron y cómo mejoraron su proceso? Discutan en equipo cómo el Few-Shot Prompting hizo más eficiente el trabajo."</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 16 (5 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro - Reflexión".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Objetivos Alcanzados".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy aprendimos a usar Few-Shot Prompting para procesar datos complejos y extrajimos la información clave para resolver un caso. ¡Felicidades, Genios!"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 30 "You've Got Mon-e".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Han completado el reto, y por su esfuerzo, ¡han ganado Mon-e!"</td>
+    </tr>
+
+
+
+
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎓 Actividad 5: Honor the Dojo ⏰ Tiempo: 1 minuto</div>
+        <div class="subtitle">Organización final del espacio y cierre de la misión.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 30 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> 
+                    "Genios, antes de terminar, vamos a dejar todo en orden. Por favor, cada equipo devuelva las Magic Tablets y asegúrense de que su espacio quede impecable. 
+                    Muchas gracias por su esfuerzo y participación hoy. Nos vemos en la siguiente misión. ¡Buen trabajo a todos!"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
